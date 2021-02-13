@@ -1,0 +1,2 @@
+1. Need to pass props form child to parent (this method possible
+    because of third task to be done);
