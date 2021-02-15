@@ -6,10 +6,10 @@ function Square(props) { // this is a function component
   // it contains only a render method and don't have their own state (in constructor)
   // this component rerenders 9 time
   const winningCombo = props.winningCombo; // array
-  const key = props.keyAsProp; // each rerender the key is different
+  const index = props.index; // each rerender the key is different
 
   let comboClass = "";
-  if (winningCombo && winningCombo.includes(key)) { // if winningCombo exists and if our combination includes key of current iteration
+  if (winningCombo && winningCombo.includes(index)) { // if winningCombo exists and if our combination includes key of current iteration
     comboClass = 'combo';
   }
 
@@ -32,7 +32,7 @@ class Board extends React.Component { // React component class
         // reads value from the constructor
         onClick={() => this.props.onClick(i, col + 1, row + 1)} // passing values to Game comp (parent)
         key={i} // col * colsAndRows.length + row
-        keyAsProp={i}
+        index={i}
         winningCombo={WinningCombo}
       />
     );
@@ -123,8 +123,8 @@ class Game extends React.Component {
 
       // in ternary operator, 0 is falsy, and >0 is truthy
       const desc = move ? // declaring description for a button
-        `Go to move #${move} (${position[move - 1]})`: // if falsy, i.e., 0
-        'Go to game start'; // if truthy, i.e., >0
+        `Go to move #${move} (${position[move - 1]})`: // if truthy, i.e., >0
+        'Go to game start'; // if falsy, i.e., 0
 
       return (
         <li key={move}> {/* unique identifier */}
