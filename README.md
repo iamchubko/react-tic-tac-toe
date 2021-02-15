@@ -1,9 +1,8 @@
 # React tic-tac-toe exerecises
 
-This is my take on tasks provided at the end of React tic-tac-toe tutorial.
+This is my take on tasks provided at the end of [React tic-tac-toe tutorial](https://reactjs.org/tutorial/tutorial.html).
 
-
-## Why
+## My why behind this repo
 
 Completing these tasks took about two weeks on and off as I was struggling with understanding many core concepts of React. Now, I decided to share my solution in case someone finds it difficult to comprehend things, as I did.
 
