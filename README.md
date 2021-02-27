@@ -1,3 +1,5 @@
+![tic-tac-toe preview](/tic-tac-toe-preview.png)
+
 # React tic-tac-toe exerecises
 
 This is my take on tasks provided at the end of [React tic-tac-toe tutorial](https://reactjs.org/tutorial/tutorial.html).
@@ -291,7 +293,7 @@ if (!squares.includes(null)) {
 }
 ```
 
-2. In `Game`'s `render()`, update an if statement with a winner text
+2. In `Game`'s `render()`, update an `if` statement with a winner text
 
 ```jsx
 if (winner === 'Draw') {
