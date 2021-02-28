@@ -1,4 +1,5 @@
-![tic-tac-toe preview](/tic-tac-toe-preview.png)
+![tic-tac-toe-preview](https://user-images.githubusercontent.com/56153711/109415543-616fbe80-79ca-11eb-957c-cd75d2864065.png)
+
 
 # React tic-tac-toe exerecises
 
