@@ -7,15 +7,15 @@ This is my take on tasks provided at the end of [React tic-tac-toe tutorial](htt
 
 ## My why behind this repo
 
-Completing these tasks took about two weeks on and off as I was struggling with understanding many core concepts of React. Now, I decided to share my solution in case someone finds it difficult to comprehend things, as I did.
+Completing these tasks took me about two weeks on and off as I was struggling with understanding many core concepts of `React`. Now, I decide to share my solution in case someone finds it difficult to comprehend things, as I did.
 
-**Disclaimer:** source code may contain comments with innacurate info, but I decided to leave it as is because it was the way I memorized stuff.
+**Disclaimer:** source code may contain comments with innacurate understanding/interpretation of things, but I decided to leave it as is.
 
 ## 1. Display the location for each move in the format (col, row) in the move history list.
 
-**Disclaimer:** before attempting this exercise, you need to complete 3rd exercise first. The reason is indexes from the loop give us a great starting point to locate squares. If you find it difficult to grasp some of the staff, toy can relate to that exercise.
+**Disclaimer:** before attempting this exercise, you need to complete [3rd exercise](https://github.com/iamchubko/react-tic-tac-toe#3-rewrite-board-to-use-two-loops-to-make-the-squares-instead-of-hardcoding-them) first. The reason is I used indexes from the loop to locate squares. If you find it difficult to grasp some of the stuff, refer to 3rd exercise.
 
-The move history list is in `Game` component's `render()` method, and to display each move location we need indexes of squares from `Board` component's `render()` method. So we need to pass data from the child to the parent. We can't do this directly, so we would use callback props.
+The move history list is in `Game` component's `render()` method, and to display each move's location we need indexes of squares from `Board` component's `render()` method. So we'll pass the data from the child to the parent. We can't do this directly, so we'll use callback props.
 
 1. In the parent component, `Game`, add new state key to the constructor with an array literal as a value
 
@@ -25,7 +25,7 @@ this.state = {
 }
 ```
 
-2. Below, create a function with two arguments to store props. Just like in handleClick(), create a copy of the array with .slice() array method, and add current step number as the second argument. Next, using spread syntax, pass the array you want to add to, and the value you adding to it. After that, update state with that variable
+2. Below, create a function with two arguments to store props. Just like in `handleClick()`, create a copy of the array with `.slice()` array method, and add current step number as the second argument. Next, using spread syntax, pass the array you want to add to, and the value you adding to it. After that, update state with that variable
 
 ```jsx
 storePosition(col, row) {
@@ -54,7 +54,7 @@ storePosition(col, row) {
 />
 ```
 
-4. In `Board`'s `render()` method aka the child, add two arguments, `col` and `row`, to renderSquare() function (you can name them anyting you like, but they should match the second arguments in both `.map()` methods)
+4. In `Board`'s `render()` method, the child, add two arguments, `col` and `row`, to `renderSquare()` function (you can name them anyting you like, but they should match the second arguments in both `.map()` methods)
 
 ```jsx
 <div>
@@ -68,7 +68,7 @@ storePosition(col, row) {
 </div>
 ```
 
-5. In `renderSquare()` function, add the same two arguments to it and to `<Square />` onClick prop. We add `+ 1` to each argument, so `0` indexed square return `1` in column and `1` in row
+5. In `renderSquare()` function, add the same two arguments to it and to `<Square />` `onClick` prop. We add `+ 1` to each argument, so `0` indexed square return `1` in the column and `1` in the row
 ```jsx
 renderSquare(i, col, row) { 
   return ( 
@@ -95,7 +95,7 @@ let moves = history.map((step, move) => {
 
 ## 2. Bold the currently selected item in the move list.
 
-Just a CSS rule to color button on focus
+Just a `CSS` rule to color button on focus
 
 ```css
 button:focus {
@@ -108,7 +108,7 @@ Previously, we generated text for move buttons using `.map()` method. You can re
 
 1. In `Board`'s `render()` method, write this code.
 Some things to note:
-  * An array variable there as a base for iteration using `.map()` method;
+  * An array variable serve us as a base for iteration using `.map()` method;
   * In `.map()` method, the first parameter is the content of the array's item; the second is an index of the item it is iterating on;
   * `renderSquare()`'s argument will be a key we will assign to `Square` component.
 
@@ -169,7 +169,7 @@ There are
 * New button with an event handler that flips current state on click.
 * Reversed html boolean attribute that changes order of numbers. Without it, button click will only change the order of array's items, thus order of buttons, not the accompanying numbers.
 
-3. In `render()` method, change `moves` variable from `const` to `let` so we can mutate it later. Next, add an `if` statement that will reverse the arrayon each re-render if truthy
+3. In `render()` method, change `moves` variable from `const` to `let` so we can mutate it later. Next, add an `if` statement that will reverse the array on each re-render if truthy
 ```jsx
 let moves = history.map((step, move) => {
   // ...
@@ -182,7 +182,7 @@ if (this.state.reversed) {
 
 ## 5. When someone wins, highlight the three squares that caused the win.
 
-To find out who wins, we use `calculateWinner()` function. To higlight squares, we can apply class to an element and color it with CSS; we can do this in `Square`. We could've called `calculateWinner()` directly in `Square`, but we couldn't pass `Game`'s state with it. Instead, we pass this function from `Game` all the way to `Square` as a prop
+To find out who wins, we use `calculateWinner()` function. To higlight squares, we can apply class to an element and color it with `CSS`; we can do this in `Square`. We could've called `calculateWinner()` directly in `Square`, but we couldn't pass `Game`'s state with it. Instead, we pass this function from `Game` all the way to `Square` as a prop
 
 1. We need to slightly modify `calculateWinner()` to return not only a winning value but a winning combination as well.  
 
@@ -194,7 +194,7 @@ if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
 
 Because one of the return statements is an array now, we should wrap the last one return statement in brackets too.
 
-2. In `Game`'s `render()` method, add a new variable a the top to store the second `return` value and add index position to all instances of `calculateWinner()` function calls: in `handleClick()` and `render()`
+2. In `Game`'s `render()` method, add a new variable at the top to store the second `return` value and add index position to all instances of `calculateWinner()` function calls: in `handleClick()` and `render()`
 
 ```jsx
 const winner = calculateWinner(current.squares)[0];
@@ -264,7 +264,7 @@ if (winningCombo && winningCombo.includes(index)) {
 }
 ```
 
-6. Write a CSS rule
+6. Write a `CSS` rule
 ```css
 .square.combo {
   background-color: green;
